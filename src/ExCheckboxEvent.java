@@ -5,9 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
 
-public class ExCheckboxEvent {
+public class ExCheckboxEvent implements ActionListener {
     private JCheckBox checkBox1CheckBox;
     private JCheckBox checkBox2CheckBox;
     private JLabel label1;
@@ -45,6 +44,7 @@ public class ExCheckboxEvent {
         label4.setText("Label");
         panel.add(label4, new GridConstraints(5, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         opcao1RadioButton = new JRadioButton();
+        opcao1RadioButton.setSelected(true);
         opcao1RadioButton.setText("opcao 1");
         panel.add(opcao1RadioButton, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         opcao2RadioButton = new JRadioButton();
@@ -60,6 +60,10 @@ public class ExCheckboxEvent {
         label1 = new JLabel();
         label1.setText("Label");
         panel.add(label1, new GridConstraints(0, 1, 3, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        ButtonGroup buttonGroup;
+        buttonGroup = new ButtonGroup();
+        buttonGroup.add(opcao2RadioButton);
+        buttonGroup.add(opcao1RadioButton);
     }
 
     /**
@@ -86,26 +90,20 @@ public class ExCheckboxEvent {
             else
                 label2.setText("caixa 2 nao selecionada");
         });
-        opcao1RadioButton.addActionListener(actionEvent -> {
-            if (opcao1RadioButton.isSelected()) {
-                opcao2RadioButton.setSelected(false);
-                label3.setText("radio 1 selecionada");
-                label4.setText("radio 2 nao selecionada");
-            } else
-                label3.setText("radio 1 nao selecionada");
-        });
-        opcao2RadioButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                if (opcao2RadioButton.isSelected()) {
-                    opcao1RadioButton.setSelected(false);
-                    label3.setText("radio 1 nao selecionada");
-                    label4.setText("radio 2 selecionada");
-                } else
-                    label4.setText("radio 3 nao selecionada");
-                System.out.println(actionEvent.getActionCommand());
-            }
-        });
+        opcao1RadioButton.addActionListener(new RadioListener(label3, label4, opcao1RadioButton));
+        opcao2RadioButton.addActionListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent actionEvent) {
+        JRadioButton sourceRadio = (JRadioButton) actionEvent.getSource();
+        if (opcao1RadioButton == sourceRadio) {
+            label3.setText("radio 1 selecionado");
+            label4.setText(("radio 2 nao selecionado"));
+        } else {
+            label4.setText("radio 2 selecionado");
+            label3.setText(("radio 1 nao selecionado"));
+        }
     }
 
     public static void main(String[] args) {
@@ -115,4 +113,6 @@ public class ExCheckboxEvent {
         frame.pack();
         frame.setVisible(true);
     }
+
+
 }

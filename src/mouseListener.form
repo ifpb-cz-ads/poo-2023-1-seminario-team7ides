@@ -22,6 +22,7 @@
         </constraints>
         <properties>
           <text value="Hover"/>
+          <toolTipText value="Clique para resetar"/>
         </properties>
       </component>
       <component id="c3e2f" class="javax.swing.JLabel" binding="label">
