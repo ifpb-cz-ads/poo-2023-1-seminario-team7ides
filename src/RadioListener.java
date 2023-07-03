@@ -4,9 +4,9 @@ import java.awt.event.ActionListener;
 
 public class RadioListener implements ActionListener {
 
-    private JLabel label3;
-    private JLabel label4;
-    private JRadioButton radioButton;
+    private final JLabel label3;
+    private final JLabel label4;
+    private final JRadioButton radioButton;
 
     public RadioListener(JLabel label3, JLabel label4, JRadioButton radioButton){
         this.label3 = label3;

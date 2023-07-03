@@ -12,7 +12,7 @@ public class loginForm {
     private JTextField login;
     private JPasswordField senha;
     private JButton entrar;
-    private static String OK = "ok";
+    private final static String OK = "ok";
 
     public loginForm() {
         entrar.setActionCommand(OK);
@@ -45,12 +45,11 @@ public class loginForm {
     }
 
     private static boolean isPasswordCorrect(char[] input) {
-        boolean isCorrect = true;
+        boolean isCorrect;
         char[] correctPassword = {'a', 'd', 'm', 'i', 'n'};
 
-        if (input.length != correctPassword.length) {
-            isCorrect = false;
-        } else {
+        if (input.length != correctPassword.length) isCorrect = false;
+        else {
             isCorrect = Arrays.equals(input, correctPassword);
         }
 
