@@ -13,7 +13,6 @@ public class loginForm {
     private JPasswordField senha;
     private JButton entrar;
     private static String OK = "ok";
-    private static String HELP = "help";
 
     public loginForm() {
         entrar.setActionCommand(OK);
