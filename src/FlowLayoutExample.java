@@ -17,10 +17,6 @@ public class FlowLayoutExample {
         JButton b4 = new JButton("4");
         JButton b5 = new JButton("5");
         JButton b6 = new JButton("6");
-        JButton b7 = new JButton("7");
-        JButton b8 = new JButton("8");
-        JButton b9 = new JButton("9");
-        JButton b10 = new JButton("10");
 
         // adding the buttons to frame
         frameObj.add(b1);
@@ -29,10 +25,6 @@ public class FlowLayoutExample {
         frameObj.add(b4);
         frameObj.add(b5);
         frameObj.add(b6);
-        frameObj.add(b7);
-        frameObj.add(b8);
-        frameObj.add(b9);
-        frameObj.add(b10);
 
         // parameterized constructor is used
         // where alignment is left
