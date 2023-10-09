@@ -54,7 +54,7 @@ src/main/resources/private/
 .mtj.tmp/
 
 # Package Files #
-*.jar
+#*.jar
 *.war
 *.nar
 *.ear
